@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    font-family: "Poppins";
+    font-weight: 400;
+}
+
+img,
+picture,
+svg,
+video {
+max-width: 100%;
+display: block;
+}
+
+html {
+    color-scheme: dark light;
+}
+
+body {
+    min-height: 100vh;
+   
+}
+
+
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 60rem;
+    margin-inline: auto;
+    
+}
+
+
+.dot {
+    display: none;
+}
+
+.displayDot {
+    display: block;
+}
+
+
+
+
+#search-box {
+    width: 100%;
+    padding: 10px 20px;
+    
+}
+.search-list li {
+   
+    background-color: rgb(26, 26, 68);
+}
+
+.search-section {
+    width: 95%;
+    max-width: 500px;
+    margin-inline: auto;
+    text-align: center;
+    position: relative;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+
+
+.remove {
+    display: none;
+    width: 100%;
+}
+
+
+
+.search-list {
+    text-align: center;
+    position: absolute;
+    display: grid;
+    gap: 1em;
+    width: 100%;
+    padding: 0;
+    background-color: #301934;
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 200px;
+    z-index: 999;
+}
+
+.message-exist {
+    display: none;
+}
+
+
+
+
+.search-list-design{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    height: 100px;
+}
+
+.search-list-design img {
+    height: 100%;
+}
+
+.popular,.genre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid rgb(65, 63, 63) ;
+    padding: 1.5rem;
+}
+
+
+.static-list {
+   list-style-type: none;
+   padding: 0;
+   /* display: grid;
+   grid-template-columns: repeat(5,1fr); */
+   display: flex;
+   overflow-x: scroll;
+   overflow-y:  hidden;
+   position: relative;
+   gap: 3em;
+   
+}
+
+.static-list > *{
+    flex-shrink: 0;
+}
+
+.static-list li {
+    border: 2px solid white;
+    transition: 0.3s ;
+}
+
+.static-list li:hover {
+    border: 2px solid red;
+    transform: scale(1.1);
+}
+
+
+.static-list span {
+    position: absolute;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+header {
+  
+    background-color: rgb(26, 26, 68);
+}
+
+
+header {
+    padding: 1rem 0;
+}
+ section {
+    padding: .5rem 0;
+}
+
+.processing{
+    display: none;
+}
+
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.nav-list {
+    display: flex;
+    gap: 1em;
+    list-style-type: none;
+}
+
+
+.logo span {
+    color: orange;
+}
+
+
+/* View Html */
+
+
+
+.movie-info{
+    display: grid;
+    justify-content: center;
+}
+
+.view-holder-flex {
+    display: grid;
+    gap: 2rem;
+}
+
+.view-holder-flex h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: .1rem;
+}
+
+.view-holder-flex p {
+    font-size: 14px;
+    letter-spacing: .1rem;
+    line-height: 2rem;
+    text-align: justify;
+}
+
+
+.view-holder-flex > *:nth-child(2) {
+    display: grid;
+    gap: 1em;
+}
+
+.holder {
+    padding: 1.5rem 0;
+}
