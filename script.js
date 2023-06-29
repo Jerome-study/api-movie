@@ -242,7 +242,7 @@ function getImdbIdMultiple (data) {
         try {
             const movie = data
             let arr = []
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 7; i++) {
                 const result = await GetImdbId(movie.results[i].imdb_id)
                 arr.push(result)
             }
