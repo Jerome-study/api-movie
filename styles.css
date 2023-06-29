@@ -21,7 +21,9 @@ max-width: 100%;
 display: block;
 }
 
-
+html {
+    color-scheme: dark light;
+}
 
 body {
     min-height: 100vh;
