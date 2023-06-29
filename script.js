@@ -141,38 +141,52 @@ popularity()
 // Static List Genre
 
 async function loadGenreList() {
-    const url = 'https://moviesminidatabase.p.rapidapi.com/genres/';
-    const data = await getData(url,options)
-    console.log(data.results)
-    getGenreData(data.results[0].genre)
-    data.results.forEach(result => {
-        const option = document.createElement('option')
-        option.value = result.genre
-        option.innerText = result.genre
-        option.classList.add('option')
-        genreList.appendChild(option)
-        
 
-        option.addEventListener('click', () => {
-            getGenreData(option.value)
+    try {
+        const url = 'https://moviesminidatabase.p.rapidapi.com/genres/';
+        const data = await getData(url,options)
+        console.log(data.results)
+        await getGenreData(data.results[0].genre)
+        data.results.forEach(result => {
+            const option = document.createElement('option')
+            option.value = result.genre
+            option.innerText = result.genre
+            option.classList.add('option')
+            genreList.appendChild(option)
+            
+
+            option.addEventListener('click', () => {
+                getGenreData(option.value)
+            })  
         })
+    } catch (error) {
 
-        
-    })
+    }
+   
 }
 
-loadGenreList()
+
+window.addEventListener('load', async () => {
+    const result = await loadGenreList()
+})
+
+
 
 
 
 
 async function getGenreData(genre) {
-    const url = `https://moviesminidatabase.p.rapidapi.com/movie/byGen/${genre}/`;
-    const data = await getData(url,options)
-    const result = await getImdbIdMultiple(data)
-    console.log(result)
-    genreStaticList.innerHTML = ""
-    loadGenreMovies(result)
+    try {
+        const url = `https://moviesminidatabase.p.rapidapi.com/movie/byGen/${genre}/`;
+        const data = await getData(url,options)
+        const result = await getImdbIdMultiple(data)
+        console.log(result)
+        genreStaticList.innerHTML = ""
+        loadGenreMovies(result)
+    } catch (error) {
+
+    }
+    
 }
 
 
