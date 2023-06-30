@@ -14,7 +14,8 @@ const genreList = document.getElementById('genre')
 const genreStaticList = document.querySelector('.genre-static-list')
 let tempValue 
 
-
+// Search Button
+const searchButton = document.getElementById('search-btn')
 
 const options = {
 	method: 'GET',
@@ -65,7 +66,7 @@ async function searchList (title) {
 
         // If data is not empty
         if (data.results.length !== 0) {
-            const dataComplete = await getImdbIdMultiple(data)
+            const dataComplete = await getImdbIdAllMultiple(data)
             completeData = dataComplete
             searchListBox.innerText = ""
             loadSearchList(completeData)
@@ -166,9 +167,7 @@ async function loadGenreList() {
 }
 
 
-window.addEventListener('load', async () => {
-    const result = await loadGenreList()
-})
+loadGenreList()
 
 
 
@@ -247,6 +246,60 @@ async function staticLoadMovies(data) {
 
 
 
+searchButton.addEventListener('click', () => {
+    if (textBox.value === "") {
+       alert('Please put a title')
+    }
+    else {
+        searchMovie(textBox.value)
+    }
+})
+
+async function searchMovie (title) {
+    try {
+        const url = `https://moviesminidatabase.p.rapidapi.com/movie/imdb_id/byTitle/${title}/`;
+        const data = await getData(url, options)
+        console.log(data)
+        if (data.results.length !== 0) {
+            const result = await getImdbIdAllMultiple(data)
+            
+            loadSearchMovie(result)
+        } else {
+            alert('movie not exist')
+        }
+        
+    } catch (error) {
+        
+    }
+}
+
+async function loadSearchMovie(movie) {
+    try {
+        window.localStorage.setItem('movie', JSON.stringify(movie))
+        window.location.href = 'movie-list.html'
+    } catch (error) {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -268,6 +321,26 @@ function getImdbIdMultiple (data) {
         
     })
 }
+
+function getImdbIdAllMultiple (data) {
+    return new Promise(async (resolve,reject) => {
+        try {
+            const movie = data
+            let arr = []
+            for (let i = 0; i < movie.results.length; i++) {
+                const result = await GetImdbId(movie.results[i].imdb_id)
+                arr.push(result)
+            }
+            resolve(arr)
+            arr = []
+        } catch (error) {
+            
+        }
+        
+    })
+}
+
+
 
 
 // GetSingleImdbId
@@ -305,3 +378,19 @@ function viewMovie(movie) {
     window.localStorage.setItem('movie', JSON.stringify(movie))
     window.location.href = 'view.html'
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

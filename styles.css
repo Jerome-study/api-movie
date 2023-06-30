@@ -78,8 +78,18 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
+}
+
+#search-btn {
+    position: absolute;
+    right: 0;
+    margin-right: 15px;
+    border:none ;
+}
+
+#search-btn img {
+    width: 100%;
+    max-width: 30px;
 }
 
 
@@ -243,3 +253,13 @@ header {
 .holder {
     padding: 1.5rem 0;
 }
+
+/* Searhc Movie View */
+
+#movie-holder {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
